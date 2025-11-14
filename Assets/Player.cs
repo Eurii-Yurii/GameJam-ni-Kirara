@@ -2,11 +2,15 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private int lives = 3;
     private float xInput;
+    private Label livesLabel;
+    public UIDocument uIDocument;
 
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float jumpHeight = 8;
@@ -19,16 +23,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool canDoubleJump;
 
-    
+
 
     void Start()
     {
-        
+        livesLabel = uIDocument.rootVisualElement.Q<Label>("LivesLabel");
     }
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -39,6 +43,10 @@ public class Player : MonoBehaviour
         Movement();
     }
 
+    void UpdateLives()
+    {
+        livesLabel = "Lives: " + lives;
+    }
 
     private void Movement()
     {
