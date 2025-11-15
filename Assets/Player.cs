@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     void UpdateLives()
     {
-        livesLabel = "Lives: " + lives;
+        //livesLabel = "Lives: " + lives;
     }
 
     private void Movement()
